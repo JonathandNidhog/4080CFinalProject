@@ -104,28 +104,33 @@ public class LobbyManager : NetworkBehaviour
         }
     }
 
-    private void EnableStartIfAllReady() {
+    private void EnableStartIfAllReady()
+    {
         int readyCount = 0;
-        foreach (PlayerInfo readyInfo in GameData.Instance.allPlayers) {
-            if (readyInfo.isReady) {
+        foreach (PlayerInfo readyInfo in GameData.Instance.allPlayers)
+        {
+            if (readyInfo.isReady)
+            {
                 readyCount += 1;
             }
         }
 
         btnStart.enabled = readyCount == GameData.Instance.allPlayers.Count;
-        
-        if (!btnStart.enabled) {
 
-            btnStart.GetComponentInChildren<TextMeshProUGUI>().text = "Start";
-           // buttonText = "<Waiting for Ready>";
+        if (!btnStart.enabled)
+        {
+            btnStart.GetComponentInChildren<TextMeshProUGUI>().text = "Waiting for Ready";
+
+
+            // buttonText = "<Waiting for Ready>";
         }
         else
         {
-           btnStart.GetComponentInChildren<TextMeshProUGUI>().text = "Waiting for Ready";
+            btnStart.GetComponentInChildren<TextMeshProUGUI>().text = "Start";
         }
         //btnStart.GetComponentInChildren<TextMeshProUGUI>().text = buttonText;
     }
-   // string buttonText = "Start";
+    // string buttonText = "Start";
     // -----------------------
     // Events
     // -----------------------
